@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import FirebaseContext from "../context/firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import * as ROUTES from "../constants/routes";
 
 export default function Login() {
+  const navigation = useNavigate();
+
   const { firebase } = useContext(FirebaseContext);
 
   const [emailAddress, setEmailAddress] = useState("");
@@ -15,7 +18,18 @@ export default function Login() {
     document.title = "Login - Reactagram";
   }, []);
 
-  const loginHandler = () => {
+  const loginHandler = async (event) => {
+    event.preventDefault();
+
+    try {
+      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+      navigation(ROUTES.DASHBOARD);
+    } catch (error) {
+      setEmailAddress("");
+      setPassword("");
+      setError(error.message);
+    }
+
     console.log(password, emailAddress);
   };
 
