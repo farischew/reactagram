@@ -29,8 +29,6 @@ export default function Login() {
       setPassword("");
       setError(error.message);
     }
-
-    console.log(password, emailAddress);
   };
 
   return (
