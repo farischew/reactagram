@@ -5,12 +5,12 @@ import "firebase/compat/firestore";
 // import { seedDatabase } from "../seed";
 
 const config = {
-  apiKey: "AIzaSyCTQVvqpB5xeBtqkRetoNkJlXvE9rKCQ2g",
-  authDomain: "reactagram-de198.firebaseapp.com",
-  projectId: "reactagram-de198",
-  storageBucket: "reactagram-de198.appspot.com",
-  messagingSenderId: "481852562848",
-  appId: "1:481852562848:web:c6498285b4ae59800958c5",
+  apiKey: "AIzaSyCvPNtiWmNR8fUzGIkM3MoAHka25JxV59k",
+  authDomain: "reactagram2.firebaseapp.com",
+  projectId: "reactagram2",
+  storageBucket: "reactagram2.appspot.com",
+  messagingSenderId: "602854085762",
+  appId: "1:602854085762:web:2bdc433ec4471c5c62109b",
 };
 
 const firebase = Firebase.initializeApp(config);
