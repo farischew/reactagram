@@ -8,7 +8,7 @@ export default function Timeline() {
   console.log(photos);
 
   return (
-    <div className="caontainer col-span-2">
+    <div className="container col-span-2">
       {!photos ? (
         <>
           <Skeleton count={1} width={640} height={400} className="mb-5" />
