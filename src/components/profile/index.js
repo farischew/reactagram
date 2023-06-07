@@ -26,9 +26,8 @@ export default function Profile({ user }) {
         followerCount: user.followers.length,
       });
     }
-    console.log("Sending again");
     getProfileInfoAndPhotos();
-  }, [user.username]);
+  }, []);
 
   return (
     <>
@@ -38,7 +37,7 @@ export default function Profile({ user }) {
         followerCount={followerCount}
         setFollowerCount={dispatch}
       />
-      {/* <Photos photos={photosCollection} /> */}
+      <Photos photos={photosCollection} />
     </>
   );
 }

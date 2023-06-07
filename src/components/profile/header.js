@@ -2,11 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import useUser from "../../hooks/use-user";
-import {
-  isLoggedInUserFollowingProfile,
-  isUserFollowingProfile,
-  toggleFollow,
-} from "../../services/firebase";
+import { isUserFollowingProfile, toggleFollow } from "../../services/firebase";
 import UserContext from "../../context/user";
 import { DEFAULT_IMAGE_PATH } from "../../constants/paths";
 
@@ -44,7 +40,7 @@ export default function Header({
 
   useEffect(() => {
     const checkIfLoggedInUserFollowingProfile = async () => {
-      const isFollowing = await isLoggedInUserFollowingProfile(
+      const isFollowing = await isUserFollowingProfile(
         user.username,
         profileUserId
       );

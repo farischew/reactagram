@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUsersNotFollowed } from "../../services/firebase";
+import { getSuggestedProfiles } from "../../services/firebase";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import SuggestedProfile from "./suggested-profile";
@@ -9,7 +9,7 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
 
   useEffect(() => {
     async function suggestedProfiles(userId, following) {
-      const response = await getUsersNotFollowed(userId, following);
+      const response = await getSuggestedProfiles(userId, following);
       setProfiles(response);
     }
 
