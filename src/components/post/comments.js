@@ -12,22 +12,31 @@ export default function Comments({
 }) {
   const [comments, setComments] = useState(allComments);
 
+  const [showComments, setShowComments] = useState(false);
+
+  const showCommentsHandler = () => {
+    setShowComments(true);
+  };
+
   return (
     <>
       <div className="p-4 pt-0 pb-4">
-        {comments.length >= 3 && (
-          <p className="text-sm text-gray-base mb-1 cursor-pointer">
-            View All {comments.length} comments
-          </p>
+        {!showComments && (
+          <button onClick={showCommentsHandler}>
+            <p className="text-sm text-gray-base mb-1 cursor-pointer">
+              View all {comments.length} comments
+            </p>
+          </button>
         )}
-        {comments.slice(0, 3).map((item) => (
-          <p key={`${item.comment}-${item.displayName}}`} className="mb-1">
-            <Link to={`/p/${item.displayName}`}>
-              <span className="mr-1 font-bold">{item.displayName}</span>
-            </Link>
-            <span>{item.comment}</span>
-          </p>
-        ))}
+        {showComments &&
+          comments.slice(0, 3).map((item) => (
+            <p key={`${item.comment}-${item.displayName}}`} className="mb-1">
+              <Link to={`/p/${item.displayName}`}>
+                <span className="mr-1 font-bold">{item.displayName}</span>
+              </Link>
+              <span>{item.comment}</span>
+            </p>
+          ))}
         <p className="text-gray-base uppsercase text-xs mt-2">
           {formatDistance(posted, new Date())} ago
         </p>
