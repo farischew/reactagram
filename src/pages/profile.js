@@ -8,25 +8,26 @@ import Header from "../components/header";
 export default function Profile() {
   const { username } = useParams();
   const [user, setUser] = useState(null);
-  const [userExists, setUserExists] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     async function checkUserExists() {
-      const user = await getUserByUsername(username);
+      const [user] = await getUserByUsername(username);
+      const goToHomePage = () => navigate(ROUTES.NOT_FOUND);
 
-      if (user.length > 0) {
-        setUser(user[0]);
-        setUserExists(true);
+      console.log(user);
+
+      if (user?.userId) {
+        setUser(user);
       } else {
-        navigate(ROUTES.NOT_FOUND);
+        goToHomePage();
       }
     }
 
     checkUserExists();
-  }, [username, navigate, user]);
+  }, [navigate, username]);
 
-  return userExists ? (
+  return user?.username ? (
     <div className="bg-gray-background">
       <Header />
       <div className="mx-auto max-w-screen-lg">

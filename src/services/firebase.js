@@ -1,6 +1,7 @@
 import { firebase, FieldValue } from "../lib/firebase";
 
 export async function doesUsernameExist(username) {
+  console.log("doesUsernameExist");
   const result = await firebase
     .firestore()
     .collection("users")
@@ -11,6 +12,7 @@ export async function doesUsernameExist(username) {
 }
 
 export async function getUserByUsername(username) {
+  console.log("getUserByUsername");
   const result = await firebase
     .firestore()
     .collection("users")
@@ -25,6 +27,7 @@ export async function getUserByUsername(username) {
 
 // get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
+  console.log("getUserByUserId");
   const result = await firebase
     .firestore()
     .collection("users")
@@ -40,6 +43,7 @@ export async function getUserByUserId(userId) {
 
 // check all conditions before limit results
 export async function getSuggestedProfiles(userId, following) {
+  console.log("getSuggestedProfiles");
   let query = firebase.firestore().collection("users");
 
   if (following.length > 0) {
@@ -62,6 +66,7 @@ export async function updateLoggedInUserFollowing(
   profileId, // the user that karl requests to follow
   isFollowingProfile // true/false (am i currently following this person?)
 ) {
+  console.log("updateLoggedInUserFollowing");
   return firebase
     .firestore()
     .collection("users")
@@ -78,6 +83,7 @@ export async function updateFollowedUserFollowers(
   loggedInUserDocId, // the user that karl requests to follow
   isFollowingProfile // true/false (am i currently following this person?)
 ) {
+  console.log("updateFollowedUserFollowers");
   return firebase
     .firestore()
     .collection("users")
@@ -90,6 +96,7 @@ export async function updateFollowedUserFollowers(
 }
 
 export async function getPhotos(userId, following) {
+  console.log("getPhotos");
   // [5,4,2] => following
   const result = await firebase
     .firestore()
@@ -120,6 +127,7 @@ export async function getPhotos(userId, following) {
 }
 
 export async function getUserPhotosByUserId(userId) {
+  console.log("getUserPhotosByUserId");
   const result = await firebase
     .firestore()
     .collection("photos")
@@ -137,6 +145,7 @@ export async function isUserFollowingProfile(
   loggedInUserUsername,
   profileUserId
 ) {
+  console.log("isUserFollowingProfile");
   const result = await firebase
     .firestore()
     .collection("users")
@@ -159,6 +168,7 @@ export async function toggleFollow(
   profileUserId,
   followingUserId
 ) {
+  console.log("toggleFollow");
   // 1st param: karl's doc id
   // 2nd param: raphael's user id
   // 3rd param: is the user following this profile? e.g. does karl follow raphael? (true/false)
