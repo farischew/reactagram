@@ -79,9 +79,9 @@ export async function updateLoggedInUserFollowing(
 }
 
 export async function updateFollowedUserFollowers(
-  profileDocId, // currently logged in user document id (karl's profile)
-  loggedInUserDocId, // the user that karl requests to follow
-  isFollowingProfile // true/false (am i currently following this person?)
+  profileDocId, // currently logged in user document id
+  loggedInUserDocId, // the user that logged in user requests to follow
+  isFollowingProfile // true/false (currently following?)
 ) {
   console.log("updateFollowedUserFollowers");
   return firebase
@@ -149,7 +149,7 @@ export async function isUserFollowingProfile(
   const result = await firebase
     .firestore()
     .collection("users")
-    .where("username", "==", loggedInUserUsername) // karl (active logged in user)
+    .where("username", "==", loggedInUserUsername) // (active logged in user)
     .where("following", "array-contains", profileUserId)
     .get();
 
@@ -169,8 +169,8 @@ export async function toggleFollow(
   followingUserId
 ) {
   console.log("toggleFollow");
-  // 1st param: karl's doc id
-  // 2nd param: raphael's user id
+  // 1st param: loggedin user's doc id
+  // 2nd param: request user's user id
   // 3rd param: is the user following this profile? e.g. does karl follow raphael? (true/false)
   await updateLoggedInUserFollowing(
     activeUserDocId,
@@ -178,8 +178,8 @@ export async function toggleFollow(
     isFollowingProfile
   );
 
-  // 1st param: karl's user id
-  // 2nd param: raphael's doc id
+  // 1st param: loggedin's user id
+  // 2nd param: request user's doc id
   // 3rd param: is the user following this profile? e.g. does karl follow raphael? (true/false)
   await updateFollowedUserFollowers(
     profileDocId,
