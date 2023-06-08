@@ -42,6 +42,7 @@ export default function Login() {
           fullName,
           emailAddress: emailAddress.toLowerCase(),
           following: [],
+          followers: [],
           dateCreated: Date.now(),
         });
 
