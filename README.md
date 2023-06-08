@@ -1,71 +1,129 @@
-# Getting Started with Create React App
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">project_title</h3>
 
-## Available Scripts
+  <p align="center">
+    project_description
+    <br />
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    ·
+    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+  </p>
+</div>
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-### `npm start`
+<!-- ABOUT THE PROJECT -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About The Project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-### `npm test`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `npm run build`
+### Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [![Next][Next.js]][Next-url]
+- [![React][React.js]][React-url]
+- [![Vue][Vue.js]][Vue-url]
+- [![Angular][Angular.io]][Angular-url]
+- [![Svelte][Svelte.dev]][Svelte-url]
+- [![Laravel][Laravel.com]][Laravel-url]
+- [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+- [![JQuery][JQuery.com]][JQuery-url]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- USAGE EXAMPLES -->
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_For more examples, please refer to the [Documentation](https://example.com)_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- Learning Points -->
 
-## Learn More
+## Learning Points
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Firebase is not heavy productin ready
+- React rendering is powerful but also dangerous at the same time, called aip point multiple times due to unseen rerendering
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+New concepts
 
-### Code Splitting
+- WhyDidYouRender
+- Loadtest
+- Firebase Cloud Firestore
+- PropTypes
+- Tailwind CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- ROADMAP -->
 
-### Analyzing the Bundle Size
+## Roadmap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [ ] Feature 1
+- [ ] Feature 2
+- [ ] Feature 3
+  - [ ] Nested Feature
 
-### Making a Progressive Web App
+See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Advanced Configuration
+<!-- CONTACT -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contact
 
-### Deployment
+Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
-### `npm run build` fails to minify
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# reactagram
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments
+
+- []()
+- []()
+- []()
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
