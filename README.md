@@ -1,23 +1,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/farischew/reactagram">
+    <img src="images/visualdemo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Reactagram</h3>
 
   <p align="center">
-    project_description
+    A clone of Instagram using React and Tailwind, with Firebase as a backend to provide a database and authentication
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/farischew/reactagram"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/farischew/reactagram">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/farischew/reactagram/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/farischew/reactagram/issues">Request Feature</a>
   </p>
 </div>
 
@@ -31,19 +31,9 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#learning-points">Learning Points</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -51,32 +41,35 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<a href="https://github.com/farischew/reactagram">
+  <img src="images/visualdemo.png" alt="Logo" width="80" height="80">
+</a>
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+### Project Synopsis
+
+The project is a semi-functional clone of Instagram built using React and Firebase as a backend service.
+Users are able to currently:
+
+- Sign up to create an account
+- Log in to an existing account
+- Explore their timeline to look at photos of users that they are following
+- Go to other user's profiles
+- Follow/Unfollow other users
+
+### Why I embarked on this project?
+
+Having completed a course on React, I wanted to built something to solidify by fundmental knowledge of React. I chose Instagram as a platform to clone due to the number of possibilities in utilising React and its clean design interface. I decided to use FIrebase as a backend service to focus my learning on the frintend aspect of this project - also giving me an opportunity to try out Firebase as a Backend service.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
-- [![Next][Next.js]][Next-url]
-- [![React][React.js]][React-url]
-- [![Vue][Vue.js]][Vue-url]
-- [![Angular][Angular.io]][Angular-url]
-- [![Svelte][Svelte.dev]][Svelte-url]
-- [![Laravel][Laravel.com]][Laravel-url]
-- [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-- [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+- React
+- Tailwind
+- Firebase
+  - Cloud Firestore
+  - Authentication
+- Tested with LoadTest
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -84,27 +77,40 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Learning Points
 
-- Firebase is not heavy productin ready
-- React rendering is powerful but also dangerous at the same time, called aip point multiple times due to unseen rerendering
+As every other project, I came across a number of obstacles and learning points.
+
+- Firebase is not heavy production ready
+  Firebase allows a quick and easy way of setting up a backend that allows provision of a database and authentication features - and a wide range of other services and features. Although the database's documents and collection structure is very different to what I am used to in SQL, it was quite easy to learn and understand. I am worried however in its ability to handle large traffic in a production-ready app (at least for the free version)
+
+- React rendering
+  React's ability to rerender components without refreshing the entire page is one of its key features that enables a smooth and dynamic user experience. However, this feature can become problematic when it leads to multiple API calls being triggered unintentionally. I encountered this problem in this project when one of my components silently rerendered - making a large number of API calls - freezing my firebase as I exceeded the call quota.
 
 New concepts
 
-- WhyDidYouRender
-- Loadtest
-- Firebase Cloud Firestore
+- <a href="https://github.com/welldone-software/why-did-you-render">WhyDidYouRender</a>
+  why-did-you-render by Welldone Software monkey patches React to notify you about potentially avoidable re-renders. Helps developers to simply track when and why a certain component re-renders.
+
+- <a href="https://github.com/alexfernandez/loadtest">Loadtest</a>
+  Runs a load test on the selected HTTP or WebSockets URL. The API allows for easy integration in your own tests.
+
 - PropTypes
-- Tailwind CSS
+  As I'm already working on TypeScript for another project, I wanted to explore the use of PropTypes instead for typechecking to ctach bugs.
+
+- <a href="https://github.com/alexfernandez/loadtest">Firebase Cloud Firestore</a>
+
+- <a href="https://tailwindcss.com/">Tailwind CSS</a>
 
 <!-- ROADMAP -->
 
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
+Below are a number of things I would like to add on to this project in the future
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+- [ ] Users to be able to create and upload a new post
+- [ ] Users to edit their profile
+- [ ] Mobile responsiveness
+
+See the [open issues](https://github.com/farischew/reactagram/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,18 +118,10 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Faris Chew - [@farischewww](https://twitter.com/farischewww) - farischew@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+[LinkedIn](https://www.linkedin.com/in/farischew/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-- []()
-- []()
-- []()
+Project Link: [https://github.com/farischew/reactagram](https://github.com/farischew/reactagram)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
