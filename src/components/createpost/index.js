@@ -1,14 +1,63 @@
+import { useState } from "react";
+
+import ImageUploadForm, {
+  NoPreviewOutput,
+  PreviewOutput,
+} from "./createUploadForm";
+
 export default function CreatePost(props) {
   const handleModalClose = () => {
     props.handleModalToggle(false);
   };
 
+  const [preview, setPreview] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [imageUploaded, setImageUploaded] = useState(false);
+
+  const imageUploader = async () => {
+    // const formData = new FormData();
+    // if (selectedFile !== null) {
+    //   formData.append("image", selectedFile);
+    //   const response = await fetch(UPLOAD_URL, {
+    //     method: "POST",
+    //     headers: {
+    //       accept: "application/json",
+    //     },
+    //     body: formData,
+    //   });
+    //   const data = await response.json();
+    //   for (const key in data) {
+    //     loadedItems.push({
+    //       item: key,
+    //       price: data[key],
+    //     });
+    //   }
+    //   ctx.setItemsHandler(loadedItems);
+    //   loadedItems.forEach((obj) => {
+    //     finalOutput[obj.item] = { price: obj.price, people: [] };
+    //   });
+    //   ctx.setFinalOutputHandler(finalOutput);
+    //   setImageUploaded(true);
+  };
+
+  const setImageHandler = (event) => {
+    const file = event.target.files ? event.target.files[0] : null;
+
+    if (file !== null) {
+      setPreview(URL.createObjectURL(file));
+    }
+
+    setSelectedFile(file);
+    setImageUploaded(false);
+  };
+
   return (
     <>
-      <div className="justify-center items-center bg-color-slate max-h-full w-full flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+      <div className="justify-center items-center bg-slate opacity-70 max-h-full w-full flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"></div>
+      <div className="justify-center items-center max-h-full w-full flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+        <div className="relative w-1/2 h-4/5 my-6 mx-auto max-w-3xl">
           {/*content*/}
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full bg-white outline-none focus:outline-none">
             {/*header*/}
             <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
               <h3 className="text-3xl font-semibold">Create a post</h3>
@@ -23,13 +72,14 @@ export default function CreatePost(props) {
             </div>
             {/*body*/}
             <div className="relative p-6 flex-auto">
-              <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                I always felt like I could do anything. That’s the main thing
-                people are controlled by! Thoughts- their perception of
-                themselves! They're slowed down by their perception of
-                themselves. If you're taught you can’t do anything, you won’t do
-                anything. I was taught I could do everything.
-              </p>
+              <div className="w-full h-4/6">
+                {preview ? (
+                  <PreviewOutput preview={preview} />
+                ) : (
+                  <NoPreviewOutput />
+                )}
+              </div>
+              <ImageUploadForm setImageHandler={setImageHandler} />
             </div>
             {/*footer*/}
             <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
