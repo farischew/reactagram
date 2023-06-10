@@ -18,7 +18,7 @@ export default function Header() {
                 <img
                   src="/images/logo.png"
                   alt="Reatagram"
-                  className="mt-2 w-6/12"
+                  className="mt-2 w-3/12"
                 />
               </Link>
             </h1>
