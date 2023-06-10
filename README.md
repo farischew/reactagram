@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/farischew/reactagram">
-    <img src="./public/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./public/images/logo.png" alt="Logo" width="160" height="160">
   </a>
 
 <h3 align="center">Reactagram</h3>
@@ -42,7 +42,7 @@
 ## About The Project
 
 <a href="https://github.com/farischew/reactagram">
-  <img src="./public/images/visualdemo.jpg" alt="Logo" width="80" height="80">
+  <img src="./public/images/visualdemo.jpg" alt="Logo" width="1000" height="744">
 </a>
 
 ### Project Synopsis
