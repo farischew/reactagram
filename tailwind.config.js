@@ -22,6 +22,7 @@ module.exports = {
         base: "#616161",
         background: "#fafafa",
         primary: "#dbdbdb",
+        light: "#d3d3d3",
       },
       red: {
         primary: "#ed4956",
