@@ -208,27 +208,35 @@ export const createNewPost = async (caption, imageUrl, userId) => {
 // Image Storage
 //Uploading Photo
 
-export const uploadPostPhoto = async (file, setPercent, setImageUrl) => {
-  const storageRef = ref(storage, `/files/${file.name}`);
+export const uploadPostPhoto = (file, setPercent, setImageUrl) => {
+  return new Promise((resolve, reject) => {
+    const storageRef = ref(storage, `/files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-  const uploadTask = uploadBytesResumable(storageRef, file);
-
-  uploadTask.on(
-    "state_changed",
-    (snapshot) => {
-      const percent = Math.round(
-        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      );
-
-      // update progress
-      setPercent(percent);
-    },
-    (err) => console.log(err),
-    () => {
-      // download url
-      getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-        setImageUrl(url);
-      });
-    }
-  );
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setPercent(percent);
+      },
+      (err) => {
+        console.log(err);
+        reject(err);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((url) => {
+            setImageUrl(url);
+            console.log(url);
+            resolve(url);
+          })
+          .catch((err) => {
+            console.log(err);
+            reject(err);
+          });
+      }
+    );
+  });
 };

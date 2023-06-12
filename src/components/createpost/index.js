@@ -19,17 +19,21 @@ export default function CreatePost(props) {
   const [caption, setCaption] = useState("");
   const [preview, setPreview] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [imageUploaded, setImageUploaded] = useState(false);
   const [imageUrl, setImageUrl] = useState();
   const [percent, setPercent] = useState(0);
 
   const createPostHandler = async () => {
     // Upload Photo to Cloud Storage and get URL
-    if (selectedFile !== null) {
-      const data = await uploadPostPhoto(selectedFile, setPercent, setImageUrl);
+    if (selectedFile == null) {
+      console.log("Error");
     }
-    console.log(imageUrl);
+    const imageUrl = await uploadPostPhoto(
+      selectedFile,
+      setPercent,
+      setImageUrl
+    );
     createNewPost(caption, imageUrl, userId);
+    console.log("test test");
   };
 
   const setCaptionHandler = (event) => {
@@ -44,7 +48,6 @@ export default function CreatePost(props) {
     }
 
     setSelectedFile(file);
-    setImageUploaded(false);
   };
 
   return (
@@ -97,7 +100,6 @@ export default function CreatePost(props) {
                 Create Post
               </button>
             </div>
-            <p>{percent}% done</p>
           </div>
         </div>
       </div>
