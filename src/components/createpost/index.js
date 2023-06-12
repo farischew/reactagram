@@ -1,29 +1,27 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import ImageUploadForm, {
   NoPreviewOutput,
   PreviewOutput,
 } from "./createUploadForm";
-import { AdvancedImage } from "@cloudinary/react";
-import { getPostPhoto, uploadPostPhoto } from "../../services/cloudinary";
+import { uploadPostPhoto } from "../../services/firebase";
 
 export default function CreatePost(props) {
   const handleModalClose = () => {
     props.handleModalToggle(false);
   };
 
-  const testImage = getPostPhoto("0cqr3ozbwknlrz07d328tau9py4v");
-
   const [preview, setPreview] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
+  const [imageUrl, setImageUrl] = useState();
+  const [percent, setPercent] = useState(0);
 
-  const imageUploader = async () => {
-    const formData = new FormData();
+  const createPostHandler = async () => {
+    // Upload Photo to Cloud Storage and get URL
     if (selectedFile !== null) {
-      formData.append("image", selectedFile);
-      const data = uploadPostPhoto(formData);
-
+      const data = await uploadPostPhoto(selectedFile, setPercent, setImageUrl);
+      console.log(imageUrl);
       setImageUploaded(true);
     }
   };
@@ -65,7 +63,6 @@ export default function CreatePost(props) {
                 ) : (
                   <NoPreviewOutput />
                 )}
-                {/* <AdvancedImage cldImg={testImage}></AdvancedImage> */}
               </div>
               <ImageUploadForm setImageHandler={setImageHandler} />
             </div>
@@ -81,11 +78,12 @@ export default function CreatePost(props) {
               <button
                 className="bg-emerald-500 active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
-                onClick={imageUploader}
+                onClick={createPostHandler}
               >
                 Create Post
               </button>
             </div>
+            <p>{percent}% done</p>
           </div>
         </div>
       </div>

@@ -4,15 +4,12 @@ import App from "./App";
 import FirebaseContext from "./context/firebase";
 import { firebase, FieldValue } from "./lib/firebase";
 import "./styles/app.css";
-import { CloudinaryContextProvider } from "./context/cloudinary";
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <FirebaseContext.Provider value={{ firebase, FieldValue }}>
-    <CloudinaryContextProvider>
-      <App />
-    </CloudinaryContextProvider>
+    <App />
   </FirebaseContext.Provider>
 );
 
