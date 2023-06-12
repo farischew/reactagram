@@ -10,12 +10,12 @@ export default function MenuBar(props) {
 
   const { user } = useContext(UserContext);
   return (
-    <div className="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0 border-x border-gray-primary">
+    <div className="fixed top-0 left-0 z-40 w-[15%] h-screen transition-transform -translate-x-full sm:translate-x-0 border-x border-gray-primary">
       <Link to={ROUTES.DASHBOARD}>
         <img
           src="/images/logo.png"
           alt="Reatagram"
-          className="w-4/12 py-6 pl-4"
+          className="w-1/2 py-6 pl-4"
         />
       </Link>
       <ul className="space-y-2 font-medium">
