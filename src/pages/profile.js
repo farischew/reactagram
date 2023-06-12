@@ -3,12 +3,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getUserByUsername } from "../services/firebase";
 import UserProfile from "../components/profile";
 import * as ROUTES from "../constants/routes";
-import Header from "../components/header";
+import MenuBar from "../components/menubar";
 
 export default function Profile() {
+  const [showModal, setShowModal] = useState(false);
   const { username } = useParams();
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+
+  const handleModalToggle = () => {
+    setShowModal(!showModal);
+  };
 
   useEffect(() => {
     async function checkUserExists() {
@@ -29,8 +34,9 @@ export default function Profile() {
 
   return user?.username ? (
     <div className="bg-gray-background">
-      <Header />
+      {/* <Header /> */}
       <div className="mx-auto max-w-screen-lg">
+        <MenuBar handleModalToggle={handleModalToggle} />
         <UserProfile user={user} />
       </div>
     </div>
