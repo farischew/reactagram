@@ -10,6 +10,9 @@ module.exports = {
       red: theme("colors.red.primary"),
     }),
     colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      slate: "#d3dce6",
       white: "#ffffff",
       blue: {
         medium: "#005c98",

@@ -3,9 +3,12 @@ import * as ROUTES from "../../constants/routes";
 import { useContext } from "react";
 import UserContext from "../../context/user";
 
-export default function MenuBar() {
-  const { user } = useContext(UserContext);
+export default function MenuBar(props) {
+  const handleModalClose = () => {
+    props.handleModalToggle(false);
+  };
 
+  const { user } = useContext(UserContext);
   return (
     <div className="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0 border-x border-gray-primary">
       <Link to={ROUTES.DASHBOARD}>
@@ -15,11 +18,11 @@ export default function MenuBar() {
           className="w-4/12 py-6 pl-4"
         />
       </Link>
-      <ul class="space-y-2 font-medium">
+      <ul className="space-y-2 font-medium">
         <li className="p-1 rounded-lg ">
           <Link
             to={ROUTES.DASHBOARD}
-            class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
+            className="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,14 +38,14 @@ export default function MenuBar() {
                 d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
               />
             </svg>
-            <span class="ml-3">Dashboard</span>
+            <span className="ml-3">Dashboard</span>
           </Link>
         </li>
 
         <li className="p-1 rounded-lg ">
           <Link
             to={ROUTES.DASHBOARD}
-            class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
+            className="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -59,14 +62,14 @@ export default function MenuBar() {
               />
             </svg>
 
-            <span class="ml-3">Search</span>
+            <span className="ml-3">Search</span>
           </Link>
         </li>
 
         <li className="p-1 rounded-lg ">
           <Link
             to={ROUTES.DASHBOARD}
-            class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
+            className="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,14 +86,14 @@ export default function MenuBar() {
               />
             </svg>
 
-            <span class="ml-3">Explore</span>
+            <span className="ml-3">Explore</span>
           </Link>
         </li>
 
         <li className="p-1 rounded-lg ">
           <Link
             to={ROUTES.DASHBOARD}
-            class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
+            className="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -107,14 +110,14 @@ export default function MenuBar() {
               />
             </svg>
 
-            <span class="ml-3">Reels</span>
+            <span className="ml-3">Reels</span>
           </Link>
         </li>
 
         <li className="p-1 rounded-lg ">
           <Link
             to={ROUTES.DASHBOARD}
-            class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
+            className="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -131,14 +134,14 @@ export default function MenuBar() {
               />
             </svg>
 
-            <span class="ml-3">Messages</span>
+            <span className="ml-3">Messages</span>
           </Link>
         </li>
 
         <li className="p-1 rounded-lg ">
           <Link
             to={ROUTES.DASHBOARD}
-            class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
+            className="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -155,14 +158,15 @@ export default function MenuBar() {
               />
             </svg>
 
-            <span class="ml-3">Notifications</span>
+            <span className="ml-3">Notifications</span>
           </Link>
         </li>
 
         <li className="p-1 rounded-lg ">
-          <Link
-            to={ROUTES.DASHBOARD}
-            class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
+          <button
+            onClick={handleModalClose}
+            type="button"
+            className="flex items-center p-2 w-full rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -179,14 +183,14 @@ export default function MenuBar() {
               />
             </svg>
 
-            <span class="ml-3">Create</span>
-          </Link>
+            <span className="ml-3">Create</span>
+          </button>
         </li>
 
         <li className="p-1 rounded-lg ">
           <Link
-            to={ROUTES.PROFILE}
-            class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
+            to={`/p/${user.displayName}`}
+            className="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <img
               className="rounded-full h-8 w-8 flex"
@@ -194,7 +198,7 @@ export default function MenuBar() {
               alt="User Avatar"
             />
 
-            <span class="ml-3">Profile</span>
+            <span className="ml-3">Profile</span>
           </Link>
         </li>
       </ul>

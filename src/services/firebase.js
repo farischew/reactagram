@@ -1,4 +1,6 @@
-import { firebase, FieldValue } from "../lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { firebase, FieldValue, storage, db } from "../lib/firebase";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export async function doesUsernameExist(username) {
   console.log("doesUsernameExist");
@@ -187,3 +189,54 @@ export async function toggleFollow(
     isFollowingProfile
   );
 }
+
+// Create a new Post
+// Add a new document in collection "photos"
+export const createNewPost = async (caption, imageUrl, userId) => {
+  const data = await addDoc(collection(db, "photos"), {
+    caption: caption,
+    comments: [],
+    imageSrc: imageUrl,
+    likes: [],
+    userId: userId,
+    userLatitude: "40,7128",
+    userLongitude: "74.0060",
+  });
+  console.log("Document written with ID: ", data);
+};
+
+// Image Storage
+//Uploading Photo
+
+export const uploadPostPhoto = (file, setPercent, setImageUrl) => {
+  return new Promise((resolve, reject) => {
+    const storageRef = ref(storage, `/files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setPercent(percent);
+      },
+      (err) => {
+        console.log(err);
+        reject(err);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((url) => {
+            setImageUrl(url);
+            console.log(url);
+            resolve(url);
+          })
+          .catch((err) => {
+            console.log(err);
+            reject(err);
+          });
+      }
+    );
+  });
+};
