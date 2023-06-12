@@ -1,4 +1,5 @@
-import { firebase, FieldValue } from "../lib/firebase";
+import { firebase, FieldValue, storage } from "../lib/firebase";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export async function doesUsernameExist(username) {
   console.log("doesUsernameExist");
@@ -187,3 +188,32 @@ export async function toggleFollow(
     isFollowingProfile
   );
 }
+
+// Image Storage
+
+//Uploading Photo
+
+export const uploadPostPhoto = async (file, setPercent, setImageUrl) => {
+  const storageRef = ref(storage, `/files/${file.name}`);
+
+  const uploadTask = uploadBytesResumable(storageRef, file);
+
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      const percent = Math.round(
+        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+      );
+
+      // update progress
+      setPercent(percent);
+    },
+    (err) => console.log(err),
+    () => {
+      // download url
+      getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+        setImageUrl(url);
+      });
+    }
+  );
+};
