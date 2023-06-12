@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function Header({ username, avatarSrc }) {
-  console.log(avatarSrc);
-
   return (
     <div className="flex border-b border-gray-primary h-4 py-8">
       <div className="flex items-center pl-2">

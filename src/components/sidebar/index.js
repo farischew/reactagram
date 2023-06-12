@@ -9,8 +9,6 @@ export default function Sidebar() {
     user: { docId, fullName, userId, username, following },
   } = useUser();
 
-  console.log(username);
-
   const [avatar, setAvatar] = useState();
   useEffect(() => {
     const getAvatar = async () => {

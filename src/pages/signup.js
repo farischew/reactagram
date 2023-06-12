@@ -62,8 +62,6 @@ export default function Login() {
 
     try {
     } catch (error) {}
-
-    console.log(password, emailAddress);
   };
 
   return (

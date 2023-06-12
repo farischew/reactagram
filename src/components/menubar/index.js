@@ -11,8 +11,6 @@ export default function MenuBar(props) {
 
   const { user } = useContext(UserContext);
 
-  console.log("THIS IS USER", user);
-
   const [avatar, setAvatar] = useState();
   useEffect(() => {
     const getAvatar = async () => {
