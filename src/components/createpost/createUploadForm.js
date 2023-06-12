@@ -18,8 +18,8 @@ export default ImageUploadForm;
 
 export const PreviewOutput = (props) => {
   return (
-    <div className="flex justify-center content-center items-center align-items w-full h-full">
-      <img src={props.preview} alt="" />
+    <div className="flex justify-center content-center items-center align-items">
+      <img src={props.preview} alt="" className="object-cover max-h-96" />
     </div>
   );
 };
