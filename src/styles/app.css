@@ -555,6 +555,10 @@ video {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -692,6 +696,9 @@ video {
 }
 .w-full {
   width: 100%;
+}
+.w-auto {
+  width: auto;
 }
 .max-w-3xl {
   max-width: 48rem;
@@ -940,6 +947,10 @@ video {
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
 .font-bold {
   font-weight: 700;
 }
@@ -954,6 +965,9 @@ video {
 }
 .leading-none {
   line-height: 1;
+}
+.leading-relaxed {
+  line-height: 1.625;
 }
 .text-black-light {
   --tw-text-opacity: 1;
