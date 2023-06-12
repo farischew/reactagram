@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import ImageUploadForm, {
   NoPreviewOutput,
   PreviewOutput,
 } from "./createUploadForm";
+import { AdvancedImage } from "@cloudinary/react";
+import { getPostPhoto } from "../../services/cloudinary";
 
 export default function CreatePost(props) {
   const handleModalClose = () => {
     props.handleModalToggle(false);
   };
+
+  const testImage = getPostPhoto("0cqr3ozbwknlrz07d328tau9py4v");
 
   const [preview, setPreview] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
@@ -73,11 +77,12 @@ export default function CreatePost(props) {
             {/*body*/}
             <div className="relative p-6 flex-auto">
               <div className="w-full h-4/6">
-                {preview ? (
+                {/* {preview ? (
                   <PreviewOutput preview={preview} />
                 ) : (
                   <NoPreviewOutput />
-                )}
+                )} */}
+                <AdvancedImage cldImg={testImage}></AdvancedImage>
               </div>
               <ImageUploadForm setImageHandler={setImageHandler} />
             </div>
