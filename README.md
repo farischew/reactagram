@@ -13,7 +13,7 @@
     <a href="https://github.com/farischew/reactagram"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/farischew/reactagram">View Demo</a>
+    <a href="https://reactagram-gray.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/farischew/reactagram/issues">Report Bug</a>
     ·
