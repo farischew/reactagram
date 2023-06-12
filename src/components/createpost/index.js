@@ -5,7 +5,7 @@ import ImageUploadForm, {
   PreviewOutput,
 } from "./createUploadForm";
 import { AdvancedImage } from "@cloudinary/react";
-import { getPostPhoto } from "../../services/cloudinary";
+import { getPostPhoto, uploadPostPhoto } from "../../services/cloudinary";
 
 export default function CreatePost(props) {
   const handleModalClose = () => {
@@ -19,29 +19,13 @@ export default function CreatePost(props) {
   const [imageUploaded, setImageUploaded] = useState(false);
 
   const imageUploader = async () => {
-    // const formData = new FormData();
-    // if (selectedFile !== null) {
-    //   formData.append("image", selectedFile);
-    //   const response = await fetch(UPLOAD_URL, {
-    //     method: "POST",
-    //     headers: {
-    //       accept: "application/json",
-    //     },
-    //     body: formData,
-    //   });
-    //   const data = await response.json();
-    //   for (const key in data) {
-    //     loadedItems.push({
-    //       item: key,
-    //       price: data[key],
-    //     });
-    //   }
-    //   ctx.setItemsHandler(loadedItems);
-    //   loadedItems.forEach((obj) => {
-    //     finalOutput[obj.item] = { price: obj.price, people: [] };
-    //   });
-    //   ctx.setFinalOutputHandler(finalOutput);
-    //   setImageUploaded(true);
+    const formData = new FormData();
+    if (selectedFile !== null) {
+      formData.append("image", selectedFile);
+      const data = uploadPostPhoto(formData);
+
+      setImageUploaded(true);
+    }
   };
 
   const setImageHandler = (event) => {
@@ -77,12 +61,12 @@ export default function CreatePost(props) {
             {/*body*/}
             <div className="relative p-6 flex-auto">
               <div className="w-full h-4/6">
-                {/* {preview ? (
+                {preview ? (
                   <PreviewOutput preview={preview} />
                 ) : (
                   <NoPreviewOutput />
-                )} */}
-                <AdvancedImage cldImg={testImage}></AdvancedImage>
+                )}
+                {/* <AdvancedImage cldImg={testImage}></AdvancedImage> */}
               </div>
               <ImageUploadForm setImageHandler={setImageHandler} />
             </div>
@@ -98,7 +82,7 @@ export default function CreatePost(props) {
               <button
                 className="bg-emerald-500 active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
-                onClick={handleModalClose}
+                onClick={imageUploader}
               >
                 Create Post
               </button>
