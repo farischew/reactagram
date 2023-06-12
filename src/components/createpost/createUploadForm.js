@@ -1,13 +1,13 @@
-const ImageUploadForm = (props) => {
+const ImageUploadForm = ({ setImageHandler, setCaption, caption }) => {
   return (
     <form className="pt-4 flex flex-col gap-2">
-      <input type="file" onChange={props.setImageHandler} className="mb-6" />
+      <input type="file" onChange={setImageHandler} className="mb-6" />
       <label>Write a Caption for Your Post:</label>
       <input
         className="border border-gray-primary rounded-lg p-1.5"
         type="text"
-        // value={caption}
-        // onChange={handleCaptionChange}
+        value={caption}
+        onChange={setCaption}
         placeholder="Enter your caption..."
       />
     </form>

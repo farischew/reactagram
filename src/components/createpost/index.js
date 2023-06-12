@@ -1,16 +1,22 @@
 import { useState } from "react";
+import useUser from "../../hooks/use-user";
 
 import ImageUploadForm, {
   NoPreviewOutput,
   PreviewOutput,
 } from "./createUploadForm";
-import { uploadPostPhoto } from "../../services/firebase";
+import { createNewPost, uploadPostPhoto } from "../../services/firebase";
 
 export default function CreatePost(props) {
+  const {
+    user: { userId },
+  } = useUser();
+
   const handleModalClose = () => {
     props.handleModalToggle(false);
   };
 
+  const [caption, setCaption] = useState("");
   const [preview, setPreview] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
@@ -21,9 +27,13 @@ export default function CreatePost(props) {
     // Upload Photo to Cloud Storage and get URL
     if (selectedFile !== null) {
       const data = await uploadPostPhoto(selectedFile, setPercent, setImageUrl);
-      console.log(imageUrl);
-      setImageUploaded(true);
     }
+    console.log(imageUrl);
+    createNewPost(caption, imageUrl, userId);
+  };
+
+  const setCaptionHandler = (event) => {
+    setCaption(event.target.value);
   };
 
   const setImageHandler = (event) => {
@@ -64,7 +74,11 @@ export default function CreatePost(props) {
                   <NoPreviewOutput />
                 )}
               </div>
-              <ImageUploadForm setImageHandler={setImageHandler} />
+              <ImageUploadForm
+                setImageHandler={setImageHandler}
+                setCaption={setCaptionHandler}
+                caption={caption}
+              />
             </div>
             {/*footer*/}
             <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

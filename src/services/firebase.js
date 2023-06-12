@@ -1,4 +1,5 @@
-import { firebase, FieldValue, storage } from "../lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { firebase, FieldValue, storage, db } from "../lib/firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export async function doesUsernameExist(username) {
@@ -189,8 +190,22 @@ export async function toggleFollow(
   );
 }
 
-// Image Storage
+// Create a new Post
+// Add a new document in collection "photos"
+export const createNewPost = async (caption, imageUrl, userId) => {
+  const data = await addDoc(collection(db, "photos"), {
+    caption: caption,
+    comments: [],
+    imageSrc: imageUrl,
+    likes: [],
+    userId: userId,
+    userLatitude: "40,7128",
+    userLongitude: "74.0060",
+  });
+  console.log("Document written with ID: ", data);
+};
 
+// Image Storage
 //Uploading Photo
 
 export const uploadPostPhoto = async (file, setPercent, setImageUrl) => {
