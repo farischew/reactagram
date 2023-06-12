@@ -189,7 +189,7 @@ export default function MenuBar(props) {
 
         <li className="p-1 rounded-lg ">
           <Link
-            to={ROUTES.PROFILE}
+            to={`/p/${user.displayName}`}
             className="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-light dark:hover:bg-gray-primary"
           >
             <img
