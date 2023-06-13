@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { memo } from "react";
 
-const User = ({ username, fullName }) =>
+const User = ({ username, fullName, avatar }) =>
   !username || !fullName ? (
     <Skeleton count={1} height={61} />
   ) : (
@@ -13,8 +13,8 @@ const User = ({ username, fullName }) =>
     >
       <div className="flex items-center justify-between col-span-1">
         <img
-          className="rounded-full flex mr-3"
-          src={`/images/avatars/${username}.jpg`}
+          className="rounded-full h-full aspect-square"
+          src={avatar}
           alt=""
         />
       </div>

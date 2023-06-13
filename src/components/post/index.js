@@ -2,18 +2,32 @@ import PropTypes from "prop-types";
 import Header from "./header";
 import Image from "./image";
 import Actions from "./actions";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Footer from "./footer";
 import Comments from "./comments";
+import { getUserAvatar } from "../../services/firebase";
 
 export default function Post({ content }) {
+  const [avatar, setAvatar] = useState();
+
   const commentInput = useRef(null);
 
   const handleFocus = () => commentInput.current.focus();
 
+  useEffect(() => {
+    const getAvatar = async () => {
+      const avatarSrc = await getUserAvatar(content.username);
+      setAvatar(avatarSrc);
+    };
+
+    if (content.username) {
+      getAvatar();
+    }
+  }, [content.username]);
+
   return (
     <div className="rounded col-span-4 border bg-white border-gray-primary mb-8">
-      <Header username={content.username} />
+      <Header username={content.username} avatarSrc={avatar} />
       <Image src={content.imageSrc} caption={content.caption} />
       <Actions
         docId={content.docId}

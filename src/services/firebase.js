@@ -43,6 +43,23 @@ export async function getUserByUserId(userId) {
   return user;
 }
 
+// get user's avatar photo
+export async function getUserAvatar(username) {
+  console.log(username);
+  console.log("getUserAvatar");
+  const result = await firebase
+    .firestore()
+    .collection("users")
+    .where("username", "==", username)
+    .get();
+  const [user] = result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+
+  return user.avatarSrc;
+}
+
 // check all conditions before limit results
 export async function getSuggestedProfiles(userId, following) {
   console.log("getSuggestedProfiles");

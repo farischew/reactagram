@@ -43,6 +43,8 @@ export default function Login() {
           emailAddress: emailAddress.toLowerCase(),
           following: [],
           followers: [],
+          avatarSrc:
+            "https://firebasestorage.googleapis.com/v0/b/reactagram3.appspot.com/o/avatars%2Fdefault.png?alt=media&token=da4c1bb9-18ee-4d31-8575-bb658085fcbf",
           dateCreated: Date.now(),
         });
 
@@ -60,8 +62,6 @@ export default function Login() {
 
     try {
     } catch (error) {}
-
-    console.log(password, emailAddress);
   };
 
   return (

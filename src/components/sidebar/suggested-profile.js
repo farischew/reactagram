@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  getUserAvatar,
   updateFollowedUserFollowers,
   updateLoggedInUserFollowing,
 } from "../../services/firebase";
@@ -25,14 +26,20 @@ export default function SuggestedProfile({
     await updateFollowedUserFollowers(spDocId, userId, false);
   }
 
+  const [avatar, setAvatar] = useState();
+  useEffect(() => {
+    const getAvatar = async () => {
+      const avatarSrc = await getUserAvatar(username);
+      setAvatar(avatarSrc);
+    };
+
+    getAvatar();
+  }, [username]);
+
   return !followed ? (
     <div className="flex flex-row items-center align-items justify-between">
       <div className="flex items-center justify-between">
-        <img
-          className="rounded-full w-8 flex mr-3"
-          src={`/images/avatars/${username}.jpg`}
-          alt=""
-        />
+        <img className="rounded-full w-8 flex mr-3" src={avatar} alt="" />
         <Link to={`/p/${username}`}>
           <p className="font-bold text-sm">{username}</p>
         </Link>

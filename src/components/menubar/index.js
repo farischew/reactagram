@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/user";
+import { getUserAvatar } from "../../services/firebase";
 
 export default function MenuBar(props) {
   const handleModalClose = () => {
@@ -9,13 +10,26 @@ export default function MenuBar(props) {
   };
 
   const { user } = useContext(UserContext);
+
+  const [avatar, setAvatar] = useState();
+  useEffect(() => {
+    const getAvatar = async () => {
+      const avatarSrc = await getUserAvatar(user.displayName);
+      setAvatar(avatarSrc);
+    };
+
+    if (user.displayName) {
+      getAvatar();
+    }
+  }, [user.displayName]);
+
   return (
-    <div className="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0 border-x border-gray-primary">
+    <div className="fixed top-0 left-0 z-40 w-[15%] h-screen transition-transform -translate-x-full sm:translate-x-0 border-x border-gray-primary">
       <Link to={ROUTES.DASHBOARD}>
         <img
           src="/images/logo.png"
           alt="Reatagram"
-          className="w-4/12 py-6 pl-4"
+          className="w-1/2 py-6 pl-4"
         />
       </Link>
       <ul className="space-y-2 font-medium">
@@ -194,7 +208,7 @@ export default function MenuBar(props) {
           >
             <img
               className="rounded-full h-8 w-8 flex"
-              src={`/images/avatars/${user.displayName}.jpg`}
+              src={avatar}
               alt="User Avatar"
             />
 

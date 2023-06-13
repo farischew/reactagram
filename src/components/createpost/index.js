@@ -33,7 +33,6 @@ export default function CreatePost(props) {
       setImageUrl
     );
     createNewPost(caption, imageUrl, userId);
-    console.log("test test");
   };
 
   const setCaptionHandler = (event) => {
