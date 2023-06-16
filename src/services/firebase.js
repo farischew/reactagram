@@ -57,6 +57,7 @@ export async function getUserAvatar(username) {
     docId: item.id,
   }));
 
+  console.log(user.avatarSrc);
   return user.avatarSrc;
 }
 
