@@ -133,6 +133,13 @@ export default function Login() {
               </Link>
             </p>
           </div>
+          <div className="flex justify-content items-center flex-col text-sm text-black border border-gray-primary rounded mb-2 mt-2 py-4 px-2">
+            <p className="text-sm">
+              Disclaimer: This is just a conceptual mock up of Instagram by
+              Faris Chew. It is not in any way intended for real use and no
+              personal data given will be recorded.
+            </p>
+          </div>
         </div>
       </div>
     </div>
