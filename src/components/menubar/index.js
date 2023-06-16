@@ -23,6 +23,8 @@ export default function MenuBar(props) {
     }
   }, [user.displayName]);
 
+  console.log(avatar);
+
   return (
     <div className="fixed top-0 left-0 z-40 w-[15%] h-screen transition-transform -translate-x-full sm:translate-x-0 border-x border-gray-primary">
       <Link to={ROUTES.DASHBOARD}>
